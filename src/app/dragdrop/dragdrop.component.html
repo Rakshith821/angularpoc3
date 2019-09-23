@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-4">
+    <div class="">
+      <h2>Draggable components</h2>
+
+      <div id="dragpoint" cdkDropList [cdkDropListData]="all" cdkDropListConnectedTo="droppoint" class="example-list"
+        (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="noReturnPredicate">
+        <div class="example-box" *ngFor="let number of all" [cdkDragData]="number" cdkDrag>{{number}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <div class="">
+      <h2>Drop Point</h2>
+
+      <div id="droppoint" cdkDropList [cdkDropListData]="even" cdkDropListConnectedTo="dragpoint" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <!-- <div
+        class="example-box"
+        *ngFor="let number of even"
+        cdkDrag
+        [cdkDragData]="number">{{number}}</div> -->
+        <div>
+          <app-matrix *ngIf="even[0] === 'Component 1'"></app-matrix>
+          <app-joker *ngIf="even[0] === 'Component 2'"></app-joker>
+          <app-pulpfiction *ngIf="even[0] === 'Component 3'"></app-pulpfiction>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
